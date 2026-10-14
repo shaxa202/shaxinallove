@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b0e">
+<meta name="description" content="Несколько искренних слов для Шахины.">
+<title>Для Шахины ♥</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#100b0e;
+  --text:#f5eae7;
+  --muted:#a99798;
+  --rose:#d38b99;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:5;
+  opacity:.12;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+.glow{
+  position:fixed;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:#7f203b;
+  filter:blur(140px);
+  opacity:.23;
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+
+header{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  padding:28px 7%;
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#b6a0a2;
+}
+
+.hero{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:90px 22px;
+  position:relative;
+}
+
+.hero-content{
+  animation:appear 1.5s ease both;
+}
+
+.eyebrow{
+  color:var(--rose);
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:27px;
+}
+
+h1,h2,.serif{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+}
+
+h1{
+  font-size:clamp(75px,16vw,145px);
+  line-height:1;
+  letter-spacing:-4px;
+  background:linear-gradient(130deg,#fff4ee,#d9a0aa,#98616e);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  margin-top:24px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:25px;
+  color:#c8b6b5;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.main-btn{
+  margin-top:42px;
+  padding:16px 25px;
+  border:1px solid #80505a;
+  background:rgba(110,38,57,.15);
+  color:#f4e5e3;
+  font-size:10px;
+  letter-spacing:2px;
+  transition:.35s;
+}
+
+.main-btn:hover{
+  background:#542331;
+  border-color:var(--rose);
+  transform:translateY(-3px);
+}
+
+.scroll{
+  position:absolute;
+  bottom:30px;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#927e80;
+}
+
+section.message{
+  min-height:90svh;
+  padding:100px 25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.letter{
+  max-width:650px;
+  width:100%;
+}
+
+.number{
+  color:var(--rose);
+  letter-spacing:4px;
+  font-size:9px;
+  margin-bottom:28px;
+}
+
+h2{
+  font-size:clamp(42px,8vw,70px);
+  line-height:1.12;
+  margin-bottom:30px;
+}
+
+h2 em{
+  color:var(--rose);
+  font-weight:400;
+}
+
+.text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,4vw,28px);
+  line-height:1.75;
+  color:#d7c8c6;
+}
+
+.text p{margin-bottom:22px}
+
+.small{
+  font-family:'Manrope',sans-serif;
+  font-size:11px;
+  line-height:2;
+  color:#9e898c;
+  margin-top:28px;
+}
+
+.divider{
+  width:70px;
+  height:1px;
+  background:#8c4b5b;
+  margin:35px auto;
+}
+
+.final{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:100px 25px;
+  position:relative;
+  overflow:hidden;
+}
+
+.final::before{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  background:radial-gradient(circle,rgba(127,32,59,.19),transparent 70%);
+  pointer-events:none;
+}
+
+.final-inner{
+  max-width:650px;
+  position:relative;
+  z-index:1;
+}
+
+.heart{
+  color:#d58191;
+  font-size:28px;
+  animation:pulse 2s infinite;
+}
+
+.final h2{margin-top:30px}
+
+.final-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,4vw,28px);
+  line-height:1.8;
+  color:#d7c8c6;
+}
+
+.signature{
+  margin-top:40px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:#d49ba5;
+  font-size:27px;
+}
+
+.last-confession{
+  margin-top:65px;
+  padding-top:35px;
+  border-top:1px solid rgba(211,139,153,.25);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,6vw,49px);
+  line-height:1.4;
+  color:#f5e5e3;
+  animation:appear 2s ease both;
+}
+
+.last-confession span{
+  display:block;
+  margin-top:12px;
+  font-style:italic;
+  color:#d38b99;
+  text-shadow:0 0 30px rgba(211,139,153,.2);
+}
+
+footer{
+  padding:25px;
+  text-align:center;
+  border-top:1px solid #ffffff12;
+  color:#897679;
+  font-size:9px;
+  letter-spacing:2px;
+  line-height:2;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:1s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+#progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:2px;
+  width:0;
+  background:#d38b99;
+  z-index:10;
+}
+
+.petal{
+  position:fixed;
+  top:-20px;
+  pointer-events:none;
+  z-index:8;
+  color:#d38b99;
+  animation:fall 5s linear forwards;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+    filter:blur(8px)
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0)
+  }
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.18)}
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(105vh) rotate(360deg);
+    opacity:0
+  }
+}
+
+@media(max-width:480px){
+  header{
+    padding:22px 18px;
+    font-size:8px;
+    letter-spacing:2px;
+  }
+
+  .subtitle{font-size:22px}
+
+  section.message{padding:85px 22px}
+
+  .last-confession{margin-top:48px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+<div class="glow"></div>
+
+<header>
+  <span>A LETTER FOR YOU</span>
+  <span>♥ SHAHINA</span>
+</header>
+
+<main>
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Особенному человеку</div>
+
+      <h1>Шахина</h1>
+
+      <p class="subtitle">
+        Есть кое-что, что я хочу тебе сказать...
+      </p>
+
+      <button class="main-btn" id="open">
+        ЭТО ПИСЬМО ДЛЯ ТЕБЯ &nbsp; ↗
+      </button>
+    </div>
+
+    <div class="scroll">НЕСКОЛЬКО ИСКРЕННИХ СЛОВ</div>
+  </section>
+
+  <!-- ПИСЬМО -->
+  <section class="message reveal" id="letter">
+    <div class="letter">
+
+      <div class="number">01 — ОТ ВСЕГО СЕРДЦА</div>
+
+      <h2>
+        Прости меня,<br>
+        <em>Шахина.</em>
+      </h2>
+
+      <div class="text">
+        <p>
+          Я понимаю, что был неправ, общаясь с другими девушками.
+          Мне искренне жаль, если этим я причинил тебе боль
+          или заставил усомниться во мне.
+        </p>
+
+        <p>
+          Я не хочу искать оправданий.
+          Мне важно, чтобы ты знала:
+          мои чувства к тебе настоящие,
+          и я очень дорожу тобой.
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="number">02 — МОИ ЧУВСТВА</div>
+
+      <h2>
+        Ты значишь<br>
+        <em>для меня очень много.</em>
+      </h2>
+
+      <div class="text">
+        <p>
+          Я люблю тебя сильнее, чем порой умею выразить словами.
+          И если мне нужно что-то доказать, я хочу делать это
+          не обещаниями, а своими поступками.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ФИНАЛЬНОЕ ПРИЗНАНИЕ -->
+  <section class="final reveal">
+    <div class="final-inner">
+
+      <div class="heart">♥</div>
+
+      <div class="eyebrow" style="margin-top:28px">
+        И последнее, что я хочу сказать
+      </div>
+
+      <h2>
+        Я не хочу<br>
+        <em>торопить твоё сердце.</em>
+      </h2>
+
+      <div class="final-text">
+        Я уважаю то, что тебе нужно время.
+        Не прошу немедленного ответа —
+        просто хотел, чтобы ты знала,
+        насколько ты мне дорога.
+      </div>
+
+      <div class="signature">
+        Прости меня, Шахина. ❤️
+      </div>
+
+      <p class="small">
+        С теплом, искренностью и надеждой на лучшее.
+      </p>
+
+      <!-- САМЫЕ ПОСЛЕДНИЕ СЛОВА -->
+      <div class="last-confession">
+        Я ооочень сильно люблю тебя.
+        <span>Ты для меня словно целая вселенная.</span>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  СОЗДАНО ОСОБЕННО ДЛЯ ШАХИНЫ ♥
+</footer>
+
+<script>
+const openButton = document.getElementById('open');
+const letter = document.getElementById('letter');
+
+// Переход к письму
+openButton.addEventListener('click', () => {
+  letter.scrollIntoView({ behavior: 'smooth' });
+  petals(16);
+});
+
+// Плавное появление секций
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Полоса прокрутки сверху
+window.addEventListener('scroll', () => {
+  const max =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = max > 0 ? window.scrollY / max * 100 : 0;
+
+  document.getElementById('progress').style.width =
+    progress + '%';
+}, { passive: true });
+
+// Красивые частицы при открытии письма
+function petals(count) {
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('span');
+
+    el.className = 'petal';
+    el.textContent = Math.random() > 0.5 ? '✧' : '♥';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDelay = Math.random() * 1.5 + 's';
+    el.style.animationDuration = (4 + Math.random() * 3) + 's';
+    el.style.fontSize = (9 + Math.random() * 10) + 'px';
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 9000);
+  }
+}
+</script>
+
+</body>
+</html>
